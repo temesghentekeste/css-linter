@@ -1,12 +1,11 @@
 AllCops:
   Exclude:
+    - "README.md"
     - "Guardfile"
     - "Rakefile"
-    - "main.rb"
-    - "my_enumerables.rb"
-    - "spec/my_enumerables_spec.rb"
-    
+
   DisplayCopNames: true
+
 Layout/LineLength:
   Max: 120
 Metrics/MethodLength:
@@ -18,6 +17,8 @@ Metrics/ClassLength:
 Metrics/BlockLength:
   ExcludedMethods: ['describe']
   Max: 30
+
+
 Style/Documentation:
   Enabled: false
 Style/ClassAndModuleChildren:
@@ -30,6 +31,7 @@ Style/DefWithParentheses:
   Enabled: false
 Style/FrozenStringLiteralComment:
   EnforcedStyle: never
+
 Layout/HashAlignment:
   EnforcedColonStyle: key
 Layout/ExtraSpacing:
