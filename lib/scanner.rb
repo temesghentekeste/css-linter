@@ -5,31 +5,40 @@ class Scanner
     @errors = []
     @lines = lines
     @space_scanner = SpaceScanner.new
-    fetch_errors
+    space_errors
   end
 
-  def fetch_errors
-    get_errors_on_last_line
-    get_errors_on_trailing_space
-    get_errors_on_opening_curly_bracket
+  def space_errors
+    space_errors_on_last_line
+    space_errors_on_trailing_space
+    space_errors_on_opening_curly_bracket
+    space_errors_on_indentation
   end
 
-  def get_errors_on_last_line
+  def space_errors_on_last_line
     @errors << @space_scanner.last_line_scan(@lines)
-    
   end
 
-  def get_errors_on_trailing_space
-    @lines.each_with_index do |line, i|
-      @errors << @space_scanner.trailing_space_scan(line, i)
+  def space_errors_on_trailing_space
+    @lines.each_with_index do |line, index|
+      @errors << @space_scanner.trailing_space_scan(line, index)
     end
-    
   end
 
-  def get_errors_on_opening_curly_bracket
-    @lines.each_with_index do |line, i|
+  def space_errors_on_opening_curly_bracket
+    @lines.each_with_index do |line, index|
       next unless line.include?('{')
-      @errors << @space_scanner.space_before_curly_bracket_scan(line, i)
+
+      @errors << @space_scanner.space_before_curly_bracket_scan(line, index)
+    end
+  end
+
+  def space_errors_on_indentation
+    @lines.each_with_index do |line, index|
+      next if line == "\n" or line.end_with?(",\n") or line.start_with?('@')
+      next if ['{', '}'].any? { |curly| line.include? curly }
+
+      @errors << @space_scanner.indentation_scan(line, index)
     end
   end
 end
