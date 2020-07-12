@@ -11,4 +11,5 @@ reader = Reader.new(file)
 lines = reader.buffer_arr
 scanner = Scanner.new(lines)
 errors = scanner.errors
+errors.delete(nil)
 p errors
