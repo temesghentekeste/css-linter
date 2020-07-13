@@ -34,6 +34,7 @@ class Scanner
 
   def space_errors_on_last_line
     @errors << @space_scanner.last_line_scan(@lines)
+    
   end
 
   def space_errors_on_trailing_space

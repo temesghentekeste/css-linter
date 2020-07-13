@@ -7,4 +7,8 @@ class Formatter
   def format_file(file)
     file.colorize(:blue)
   end
+
+  def format_message(message)
+    message.colorize(:red)
+  end
 end
