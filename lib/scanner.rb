@@ -1,11 +1,15 @@
 require_relative './space_scan'
+require_relative './syntax_scan'
+
 class Scanner
   attr_reader :errors
   def initialize(lines)
     @errors = []
     @lines = lines
     @space_scanner = SpaceScanner.new
+    @syntax_scanner = SyntaxScanner.new
     space_errors
+    syntax_errors
   end
 
   def space_errors
@@ -13,6 +17,19 @@ class Scanner
     space_errors_on_trailing_space
     space_errors_on_opening_curly_bracket
     space_errors_on_indentation
+  end
+
+  def syntax_errors
+    missing_semicolon_errors
+  end
+
+  def missing_semicolon_errors
+    
+    @lines.each_with_index do |line, index|
+      next if line.include?('{') || line.include?('}') || line == "\n" || line.end_with?(",\n")
+      @errors << @syntax_scanner.missing_semicolon_scan(line, index)
+    end
+    errors
   end
 
   def space_errors_on_last_line
