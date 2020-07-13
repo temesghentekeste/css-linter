@@ -1,5 +1,6 @@
 require_relative '../lib/reader.rb'
 require_relative '../lib/scanner.rb'
+require_relative '../lib/reporter.rb'
 require 'byebug'
 
 
@@ -10,39 +11,40 @@ class MiniLint
     puts ''
     puts 'Reading file(s) from working directory...'
     @file = file
-    scan
+    @lines_to_scan = read
+    @errors = fetch_errors
+    report_errors
+    
   end
 
-  def scan
+  def read
     if @file.nil?
-      scan_files
+      read_files
     else
       if File.exist?(@file)
-        scan_file  
+        read_file  
       else
         puts "Invalid file, please input valid file." unless @valid_path.match?(@file)
       end
     end
   end
 
-  def scan_file
+  def read_file
     puts 'Scanning file for possible errors...'
     puts ''
     reader = Reader.new(@file)
     lines = reader.buffer_arr
-    scanner = Scanner.new(lines)
-    errors_hash = Hash.new
-    errors = scanner.errors
-    errors.delete(nil)
-    errors_hash[@file] = errors
-    formatter = Formatter.new
+  end
 
-    errors_hash.each do |key,errorrs_array|
-      key = formatter.format_file(key)
-      errorrs_array.each {|error|
-        puts "#{key}:#{error}"
-      }
-    end
+  def fetch_errors
+    scanner = Scanner.new(@lines_to_scan)
+    scanner.errors
+    
+  end
+
+  def report_errors
+    reporter = Reporter.new
+    reporter.report(@errors, @file)
   end
 
   # def scan_files
@@ -69,6 +71,10 @@ end
 
 
 file = ARGV[0]
+files = ARGV
+files.each_with_index  {|f, index|
+  p "#{index}::#{f}"
+}
 p file
 # debugger
 mini_lint = MiniLint.new(file)
