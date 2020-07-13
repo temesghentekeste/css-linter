@@ -13,3 +13,6 @@ scanner = Scanner.new(lines)
 errors = scanner.errors
 errors.delete(nil)
 p errors
+errors.each do |error|
+  puts error
+end
