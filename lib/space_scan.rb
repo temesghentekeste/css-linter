@@ -1,9 +1,8 @@
 require_relative 'formatter'
 class SpaceScanner
-
   def initialize
     formatter = Formatter.new
-    @error_type = formatter.format_error_type("Format error")
+    @error_type = formatter.format_error_type('Format error')
   end
 
   def last_line_scan(lines)
@@ -16,7 +15,9 @@ class SpaceScanner
   end
 
   def space_before_curly_bracket_scan(line, line_number)
-    "Line #{line_number + 1}: #{@error_type}there should be a space before opening curly bracket" unless line.match(/[[:space:]]\{/)
+    unless line.match(/[[:space:]]\{/)
+      "Line #{line_number + 1}: #{@error_type}there should be a space before opening curly bracket"
+    end
   end
 
   def indentation_scan(line, line_number)

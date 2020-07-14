@@ -13,6 +13,7 @@ class Scanner
   end
 
   private
+
   def space_errors
     space_errors_on_last_line
     space_errors_on_trailing_space
@@ -25,9 +26,9 @@ class Scanner
   end
 
   def missing_semicolon_errors
-    
     @lines.each_with_index do |line, index|
       next if line.include?('{') || line.include?('}') || line == "\n" || line.end_with?(",\n")
+
       @errors << @syntax_scanner.missing_semicolon_scan(line, index)
     end
     @errors
@@ -35,7 +36,6 @@ class Scanner
 
   def space_errors_on_last_line
     @errors << @space_scanner.last_line_scan(@lines)
-    
   end
 
   def space_errors_on_trailing_space
@@ -47,6 +47,7 @@ class Scanner
   def space_errors_on_opening_curly_bracket
     @lines.each_with_index do |line, index|
       next unless line.include?('{')
+
       @errors << @space_scanner.space_before_curly_bracket_scan(line, index)
     end
     @errors
