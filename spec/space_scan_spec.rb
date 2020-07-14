@@ -8,6 +8,7 @@ describe SpaceScanner do
   let(:lines_with_end_line_error) { [".primary-color:hover {\n", "  color: #1da1f2; \n", "}\n\n"]}
   let(:last_line_missing) { [".primary-color:hover {\n", "  color: #1da1f2; \n", "}"]}
   let(:lines_with_trailing_space) { [".primary-color:hover {\n", "  color: #1da1f2; \n", "}\n"]}
+  let(:lines_with_space_before_curly_brace) { [".primary-color:hover{\n", "  color: #1da1f2;\n", "}\n"]}
   let(:errors) { []}
 
   describe 'last_line_scan' do
@@ -29,7 +30,7 @@ describe SpaceScanner do
 
   describe 'trailing_space_scan' do
 
-    it 'should return nil if there is no trailing space' do
+    it 'should return empty array if there is no trailing space' do
       lines_without_error.each_with_index do |line, index|
         errors << subject.trailing_space_scan(line, index)
       end
@@ -37,12 +38,34 @@ describe SpaceScanner do
       expect(errors).to eql([])
     end
 
-    it 'should return error message if there is a trailing space' do
+    it 'should return an array of error messages if there is a trailing space' do
       lines_with_trailing_space.each_with_index do |line, index|
         errors << subject.trailing_space_scan(line, index)
       end
       errors.delete(nil)
-      expect(errors.first.include?("trailing space found")).to eql(true)
+      expect(errors).to eql(["Line 2: \e[0;33;49mFormat error\e[0m: : trailing space found."])
+    end
+  end
+
+  describe 'space_before_curly_bracket_scan' do
+    it 'should return empty array if there is a space before the opening curly bracket' do
+      lines_without_error.each_with_index do |line, index|
+        next unless line.include?('{')
+        errors << subject.space_before_curly_bracket_scan(line,index)
+      end
+      errors.delete(nil)
+      actual = errors
+      expect(actual).to eql([])
+    end
+
+    it 'should return an array of error message if there is a space before the opening curly bracket' do
+      lines_with_space_before_curly_brace.each_with_index do |line, index|
+        next unless line.include?('{')
+        errors << subject.space_before_curly_bracket_scan(line,index)
+      end
+      errors.delete(nil)
+      actual = errors
+      expect(actual).to eql(["Line 1: \e[0;33;49mFormat error\e[0m: there should be a space before opening curly bracket"])
     end
   end
 end

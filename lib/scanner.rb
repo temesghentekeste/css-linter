@@ -30,7 +30,7 @@ class Scanner
       next if line.include?('{') || line.include?('}') || line == "\n" || line.end_with?(",\n")
       @errors << @syntax_scanner.missing_semicolon_scan(line, index)
     end
-    errors
+    @errors
   end
 
   def space_errors_on_last_line
@@ -47,9 +47,9 @@ class Scanner
   def space_errors_on_opening_curly_bracket
     @lines.each_with_index do |line, index|
       next unless line.include?('{')
-
       @errors << @space_scanner.space_before_curly_bracket_scan(line, index)
     end
+    @errors
   end
 
   def space_errors_on_indentation
