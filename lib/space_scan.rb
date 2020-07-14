@@ -7,8 +7,8 @@ class SpaceScanner
   end
 
   def last_line_scan(lines)
-    return ":Line #{lines.size + 1}: #{@error_type}trailing blank lines detected." unless lines[-1] == "}\n"
     return ":Line #{lines.size + 1}: #{@error_type}final newline messing." unless lines.last.include? "\n"
+    return ":Line #{lines.size + 1}: #{@error_type}trailing blank lines detected." unless lines[-1] == "}\n"
   end
 
   def trailing_space_scan(line, line_number)

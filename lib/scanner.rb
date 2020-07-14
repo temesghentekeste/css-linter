@@ -12,6 +12,7 @@ class Scanner
     syntax_errors
   end
 
+  private
   def space_errors
     space_errors_on_last_line
     space_errors_on_trailing_space

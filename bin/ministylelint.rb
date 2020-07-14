@@ -28,6 +28,7 @@ class MiniLint
     end
   end
 
+  private
   def read
     if @file.nil? 
       read_files
