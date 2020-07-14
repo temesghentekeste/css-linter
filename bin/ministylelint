@@ -1,9 +1,10 @@
+#!/usr/bin/env ruby
 require_relative '../lib/reader.rb'
 require_relative '../lib/scanner.rb'
 require_relative '../lib/reporter.rb'
 require 'byebug'
 
-class MiniLint
+class MinStyleiLint
   def initialize(file)
     puts 'Initializing Mini Style Lint... '
     puts ''
@@ -24,6 +25,7 @@ class MiniLint
       puts ''
       @errors = fetch_errors
       report_errors
+      summarize_report(1, @errors.size)
     end
   end
 
@@ -91,21 +93,18 @@ class MiniLint
       file_count += 1
       errors_count += @errors.size
     end
+   summarize_report(file_count, errors_count)
+  end
 
+  def summarize_report(file_count, errors_count)
     puts
     puts
     formatter = Formatter.new
     errors_count = formatter.format_message(errors_count.to_s + ' offenses')
 
-    puts "#{file_count} files scanned, #{errors_count} detected"
+    puts "#{file_count} file(s) scanned, #{errors_count} detected"
   end
 end
 
 file = ARGV[0]
-# files = ARGV
-# files.each_with_index  {|f, index|
-#   p "#{index}::#{f}"
-# }
-p file
-# debugger
-mini_lint = MiniLint.new(file)
+mini_lint = MinStyleiLint.new(file)
