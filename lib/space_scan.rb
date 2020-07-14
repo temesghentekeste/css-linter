@@ -1,17 +1,16 @@
-require_relative 'formatter'
-class SpaceScanner
+require_relative 'scan'
+class SpaceScanner < Scan
+ 
   def initialize
-    formatter = Formatter.new
-    @error_type = formatter.format_error_type('Format error')
+    super("Format error")
   end
-
   def last_line_scan(lines)
     return ":Line #{lines.size + 1}: #{@error_type}final newline messing." unless lines.last.include? "\n"
     return ":Line #{lines.size + 1}: #{@error_type}trailing blank lines detected." unless lines[-1] == "}\n"
   end
 
   def trailing_space_scan(line, line_number)
-    "Line #{line_number + 1}: #{@error_type}: trailing space found." if line.end_with?("; \n")
+    "Line #{line_number + 1}: #{@error_type}trailing space found." if line.end_with?("; \n")
   end
 
   def space_before_curly_bracket_scan(line, line_number)

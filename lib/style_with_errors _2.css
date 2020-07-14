@@ -17,11 +17,11 @@ body {
 
 a {
   color: var(--black-color);
-  font-family: var(--primary-font);
+  font-family: var(--primary-font)
 }
 
 h2 {
-  font-size: 1rem;
+    font-size: 1rem;
   padding: 0 0 0.8rem;
   color: rgba(3, 3, 3, 0.4);
   font-weight: 600;

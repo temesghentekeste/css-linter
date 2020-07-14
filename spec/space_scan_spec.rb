@@ -27,7 +27,7 @@ describe SpaceScanner do
   end
 
   describe '#trailing_space_scan' do
-    it 'should return empty array if there is no trailing space' do
+    it 'should return nil if there is no trailing space' do
       lines_without_error.each_with_index do |line, index|
         errors << subject.trailing_space_scan(line, index)
       end
@@ -35,17 +35,17 @@ describe SpaceScanner do
       expect(errors).to eql([])
     end
 
-    it 'should return an array of error messages if there is a trailing space' do
+    it 'should return an error messages if there is a trailing space' do
       lines_with_trailing_space.each_with_index do |line, index|
         errors << subject.trailing_space_scan(line, index)
       end
       errors.delete(nil)
-      expect(errors).to eql(["Line 2: \e[0;33;49mFormat error\e[0m: : trailing space found."])
+      expect(errors).to eql(["Line 2: \e[0;33;49mFormat error\e[0m: trailing space found."])
     end
   end
 
   describe '#space_before_curly_bracket_scan' do
-    it 'should return empty array if there is a space before the opening curly bracket' do
+    it 'should return nil if there is a space before the opening curly bracket' do
       lines_without_error.each_with_index do |line, index|
         next unless line.include?('{')
 
@@ -55,7 +55,7 @@ describe SpaceScanner do
       expect(errors).to eql([])
     end
 
-    it 'should return an array of error message if there is a space before the opening curly bracket' do
+    it 'should return an error message if there is a space before the opening curly bracket' do
       lines_without_space_before_curly_brace.each_with_index do |line, index|
         next unless line.include?('{')
 
@@ -67,7 +67,7 @@ describe SpaceScanner do
   end
 
   describe '#indentation_scan' do
-    it 'should return empty array if there is no inconsistent indentation' do
+    it 'should return nil if there is no inconsistent indentation' do
       lines_without_error.each_with_index do |line, index|
         next if line == "\n" or line.end_with?(",\n") or line.start_with?('@')
         next if ['{', '}'].any? { |curly| line.include? curly }
@@ -78,7 +78,7 @@ describe SpaceScanner do
       expect(errors).to eql([])
     end
 
-    it 'should return an array of error messages if there is inconsistent indentation' do
+    it 'should return an error messages if there is inconsistent indentation' do
       lines_with_indentation_error.each_with_index do |line, index|
         next if line == "\n" or line.end_with?(",\n") or line.start_with?('@')
         next if ['{', '}'].any? { |curly| line.include? curly }
