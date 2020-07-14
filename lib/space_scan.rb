@@ -1,9 +1,9 @@
 require_relative 'scan'
 class SpaceScanner < Scan
- 
   def initialize
-    super("Format error")
+    super('Format error')
   end
+
   def last_line_scan(lines)
     return ":Line #{lines.size + 1}: #{@error_type}final newline messing." unless lines.last.include? "\n"
     return ":Line #{lines.size + 1}: #{@error_type}trailing blank lines detected." unless lines[-1] == "}\n"

@@ -93,7 +93,7 @@ class MinStyleiLint
       file_count += 1
       errors_count += @errors.size
     end
-   summarize_report(file_count, errors_count)
+    summarize_report(file_count, errors_count)
   end
 
   def summarize_report(file_count, errors_count)

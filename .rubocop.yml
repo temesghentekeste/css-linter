@@ -3,6 +3,9 @@ AllCops:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
+    - "bin/ministylelint"
+    - "spec/space_scan_spec.rb"
+    - "lib/space_scan.rb"
 
   DisplayCopNames: true
 
