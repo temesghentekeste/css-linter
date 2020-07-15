@@ -1,7 +1,7 @@
 # spec/space_scan_spec.rb
 
 require './lib/syntax_scan'
-
+require 'colorize'
 describe SyntaxScanner do
   subject { SyntaxScanner.new }
   let(:lines_without_error) { [".primary-color:hover {\n", "  color: #1da1f2;\n", "}\n"] }
