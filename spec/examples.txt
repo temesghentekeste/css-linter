@@ -1,13 +1,13 @@
 example_id                        | status | run_time        |
 --------------------------------- | ------ | --------------- |
-./spec/space_scan_spec.rb[1:1:1]  | passed | 0.00008 seconds |
-./spec/space_scan_spec.rb[1:1:2]  | passed | 0.00009 seconds |
-./spec/space_scan_spec.rb[1:1:3]  | passed | 0.00009 seconds |
-./spec/space_scan_spec.rb[1:2:1]  | passed | 0.00016 seconds |
-./spec/space_scan_spec.rb[1:2:2]  | passed | 0.00018 seconds |
-./spec/space_scan_spec.rb[1:3:1]  | passed | 0.0001 seconds  |
-./spec/space_scan_spec.rb[1:3:2]  | passed | 0.0001 seconds  |
-./spec/space_scan_spec.rb[1:4:1]  | passed | 0.0001 seconds  |
+./spec/space_scan_spec.rb[1:1:1]  | passed | 0.0001 seconds  |
+./spec/space_scan_spec.rb[1:1:2]  | passed | 0.0001 seconds  |
+./spec/space_scan_spec.rb[1:1:3]  | passed | 0.00011 seconds |
+./spec/space_scan_spec.rb[1:2:1]  | passed | 0.00009 seconds |
+./spec/space_scan_spec.rb[1:2:2]  | passed | 0.00012 seconds |
+./spec/space_scan_spec.rb[1:3:1]  | passed | 0.00014 seconds |
+./spec/space_scan_spec.rb[1:3:2]  | passed | 0.00011 seconds |
+./spec/space_scan_spec.rb[1:4:1]  | passed | 0.00123 seconds |
 ./spec/space_scan_spec.rb[1:4:2]  | passed | 0.00011 seconds |
-./spec/syntax_scan_spec.rb[1:1:1] | passed | 0.00048 seconds |
-./spec/syntax_scan_spec.rb[1:1:2] | passed | 0.00013 seconds |
+./spec/syntax_scan_spec.rb[1:1:1] | passed | 0.00063 seconds |
+./spec/syntax_scan_spec.rb[1:1:2] | passed | 0.00017 seconds |
