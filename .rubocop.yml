@@ -3,6 +3,8 @@ AllCops:
     - "README.md"
     - "Guardfile"
     - "Rakefile"
+    - "Gemfile"
+    - "Gemfile.lock"
     - "bin/ministylelint"
     - "spec/space_scan_spec.rb"
     - "lib/space_scan.rb"
