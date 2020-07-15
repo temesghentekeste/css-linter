@@ -95,7 +95,7 @@ Here is an example of good code with correct usage of syntax, spaces and indenta
 ```
 ##### Bad Code example -missing semicolon
 ```
-.newsletter-signup {
+.newsletter-signup{
   font: bold 18px/18px 'Roboto Condensed', sans-serif;
   padding: 20px;
   background-color: #f4f5f6
