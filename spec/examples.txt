@@ -13,3 +13,5 @@ example_id                        | status | run_time        |
 ./spec/syntax_scan_spec.rb[1:1:2] | passed | 0.00017 seconds |
 
 
+
+

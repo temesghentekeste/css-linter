@@ -18,7 +18,7 @@ class MinStyleiLint
       puts
       fetch_errors_dir_files
     else
-      @file_to_scan = read
+      @file_lines_array = read
       show_progress('Scanning file(s) for possible errors:')
       puts
       puts ''
@@ -47,7 +47,7 @@ class MinStyleiLint
   end
 
   def fetch_errors
-    scanner = Scanner.new(@file_to_scan)
+    scanner = Scanner.new(@file_lines_array)
     scanner.errors
   end
 
@@ -75,7 +75,7 @@ class MinStyleiLint
       file_name = temp_file_name[-2] + '/' + temp_file_name[-1]
       @file = file
       lines = read_file
-      @file_to_scan = lines
+      @file_lines_array = lines
       errors = fetch_errors
       errors.delete(nil)
       @file = file_name
