@@ -13,7 +13,7 @@
 <a href="#with">Built with</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#setup">Setup</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 <a href="#ldl">Live Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-<a href="#gandb">Good and Bad code examples</a>
+<a href="#gandb">Code examples</a>
 <a href="#author">Author</a>
 
 
@@ -30,10 +30,10 @@ This project is a capstone project developed as a completion of Ruby section of 
 
 ## Screenshots <a name = "screenshots"></a>
 ### Screenshot of linter passing with no errors
-![screenshot](./images/single_file_scanning) 
+![screenshot](./images/single_file_scanning.png) 
 
 ### Screenshot of linter displaying errors
-![screenshot](./images/multiple_file_scanning)
+![screenshot](./images/multiple_file_scanning.png)
 
 ## 🔧 Built with<a name = "with"></a>
 
