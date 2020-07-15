@@ -2,7 +2,6 @@
 require_relative '../lib/reader.rb'
 require_relative '../lib/scanner.rb'
 require_relative '../lib/reporter.rb'
-require 'byebug'
 
 class MinStyleiLint
   def initialize(file)
