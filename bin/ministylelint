@@ -17,6 +17,7 @@ class MinStyleiLint
       show_progress('Scanning file(s) for possible errors:')
       puts
       fetch_errors_dir_files
+      report_multiple_files_errors
     else
       @file_lines_array = read
       show_progress('Scanning file(s) for possible errors:')
@@ -24,7 +25,6 @@ class MinStyleiLint
       puts ''
       @errors = fetch_errors
       report_errors
-      summarize_report(1, @errors.size)
     end
   end
 
@@ -43,7 +43,7 @@ class MinStyleiLint
 
   def read_file
     reader = Reader.new(@file)
-    lines = reader.buffer_arr
+    file_lines_array = reader.buffer_arr
   end
 
   def fetch_errors
@@ -54,14 +54,20 @@ class MinStyleiLint
   def report_errors
     reporter = Reporter.new
     reporter.report(@errors, @file)
+    summarize_report(1, @errors.size)
   end
 
-  def show_progress(message = nil)
-    0.step(100, 20) do |i|
-      printf("\r#{message} %-20s", '.' * (i / 5))
-      sleep(0.1)
+  def report_multiple_files_errors
+    file_count = 0
+    errors_count = 0
+    @errors_hash.each do |file, errors|
+      @file = file
+      @errors = errors
+      report_errors
+      file_count += 1
+      errors_count += @errors.size
     end
-    puts
+    summarize_report(file_count, errors_count)
   end
 
   def read_files
@@ -74,24 +80,20 @@ class MinStyleiLint
       temp_file_name = file.split('/')
       file_name = temp_file_name[-2] + '/' + temp_file_name[-1]
       @file = file
-      lines = read_file
-      @file_lines_array = lines
+      @file_lines_array = read_file
       errors = fetch_errors
       errors.delete(nil)
       @file = file_name
       @errors_hash[@file] = errors
     end
+  end
 
-    file_count = 0
-    errors_count = 0
-    @errors_hash.each do |file, errors|
-      @file = file
-      @errors = errors
-      report_errors
-      file_count += 1
-      errors_count += @errors.size
+  def show_progress(message = nil)
+    0.step(100, 20) do |i|
+      printf("\r#{message} %-20s", '.' * (i / 5))
+      sleep(0.1)
     end
-    summarize_report(file_count, errors_count)
+    puts
   end
 
   def summarize_report(file_count, errors_count)
