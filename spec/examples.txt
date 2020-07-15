@@ -11,3 +11,5 @@ example_id                        | status | run_time        |
 ./spec/space_scan_spec.rb[1:4:2]  | passed | 0.00011 seconds |
 ./spec/syntax_scan_spec.rb[1:1:1] | passed | 0.00063 seconds |
 ./spec/syntax_scan_spec.rb[1:1:2] | passed | 0.00017 seconds |
+
+
