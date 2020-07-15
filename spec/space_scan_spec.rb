@@ -2,7 +2,7 @@
 
 require './lib/space_scan'
 
-describe SpaceScanner do
+RSpec.describe SpaceScanner do
   subject { SpaceScanner.new }
   let(:lines_without_error) { [".primary-color:hover {\n", "  color: #1da1f2;\n", "}\n"] }
   let(:lines_with_end_line_error) { [".primary-color:hover {\n", "  color: #1da1f2; \n", "}\n\n"] }
