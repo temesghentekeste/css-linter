@@ -22,7 +22,7 @@ RSpec.describe SpaceScanner do
     end
 
     it 'should return error message if the last line is missing' do
-      expect(subject.last_line_scan(last_line_missing)).to eql(":Line 4: \e[0;33;49mFormat error\e[0m: final newline messing.")
+      expect(subject.last_line_scan(last_line_missing)).to eql(":Line 4: \e[0;33;49mFormat error\e[0m: final newline missing.")
     end
   end
 

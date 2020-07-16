@@ -53,16 +53,19 @@ This project is a capstone project developed as a completion of Ruby section of 
 
 - Fork the repo to your remote repository.
 - Clone or download the repository to a local directory on your computer.
-- In your terminal, change directory into the css-linter/bin folder.
-- Run ln -s $PWD/ministylelint /usr/local/bin in your terminal (this creatres a softlink, or an alias in OS X terms )
+- To make the ministylelint file executable, using your terminal go to the project directory in your local machine and run the following commands
+  - cd css-linter/bin (changes directory into the bin folder)
+  - sudo chmod 755 ministylelint (this command adds execute permissions to the file)
+  - ln -s $PWD/ministylelint /usr/local/bin  (this creates a softlink, or an alias in OS X terms and enables you to run the file without prefixing it with the ruby command )
 - To use the tool, run the following commands:
-   - ministylelint &lt;filename&gt; Eg: ministylelint style.css and this checks only the specified file
+   - ministylelint &lt;filename&gt; Eg: ministylelint styles/style_without_error.css and this checks only the specified file
    - ministylelint (this checks all the css files in the working directroy)
    - For quick test, run the following commands
-      - ministylelint lib/style_with_errors_1.css 
+      - ministylelint styles/style_with_errors_1.css 
   - If all fails
-      - ruby bin/ministylelint lib/style_with_errors_1.css or
-      - ruby bin/ministylelint
+      - you should be in the root directory of the project and run these commands
+      - ruby bin/ministylelint styles/style_without_error.css (to check one file)
+      - ruby bin/ministylelint (to check multiple files)
 
 ## 🛠 Installing <a name = "ins"></a>
 
@@ -103,6 +106,34 @@ Here is an example of good code with correct usage of syntax, spaces and indenta
   margin: 0 auto 30px;
 }
 ```
+
+## 🔨 Testing
+
+To run the tests described for each method:
+- change directory to the root of the project (cd into the project folder)
+- from terminal run the command `rspec`
+- to run a specific test `rspec ./spec/space_scan_spec.rb:70` (here 104 is the line number of the method)
+- result should be similar to:
+<h4>SpaceScanner</h4>
+<h4>#space_before_curly_bracket_scan</h4>
+  <li>should return nil if there is a space before the opening curly bracket.</li>
+  <li>should return an error message if there is a space before the opening curly bracket</li>
+<h4>#trailing_space_scan</h4>
+  <li>should return an error messages if there is a trailing space.</li>
+  <li>should return nil if there is no trailing space</li>
+<h4>#last_line_scan</h4>
+  <li>should return nil if the last line is blank.</li>
+  <li>should return error message if the last line is missing</li>
+  <li>should return error message if the last line has more than one trailing blank line</li>
+  <h4>#indentation_scan</h4>
+  <li>should return an error messages if there is inconsistent indentation</li>
+  <li>should return nil if there is no inconsistent indentation</li>
+<h4>SyntaxScanner</h4>
+<h4>#missing_semicolon_scan</h4>
+   <li>should return error message if there is missing simicolon</li>
+   <li>should return nil if there is no missing simicolon</li>
+
+
 ## ✒️  Author <a name = "author"></a>
 
 

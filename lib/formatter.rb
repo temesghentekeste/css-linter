@@ -8,7 +8,9 @@ class Formatter
     file.colorize(:blue)
   end
 
-  def format_message(message)
+  def format_message(errors_count, message)
+    return message.colorize(:green) if errors_count.zero?
+
     message.colorize(:red)
   end
 end

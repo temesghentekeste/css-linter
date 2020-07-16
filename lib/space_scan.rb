@@ -5,7 +5,7 @@ class SpaceScanner < Scan
   end
 
   def last_line_scan(lines)
-    return ":Line #{lines.size + 1}: #{@error_type}final newline messing." unless lines.last.include? "\n"
+    return ":Line #{lines.size + 1}: #{@error_type}final newline missing." unless lines.last.include? "\n"
     return ":Line #{lines.size + 1}: #{@error_type}trailing blank lines detected." unless lines[-1] == "}\n"
   end
 
