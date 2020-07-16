@@ -113,7 +113,8 @@ To run the tests described for each method:
 - change directory to the root of the project (cd into the project folder)
 - from terminal run the command `rspec`
 - to run a specific test `rspec ./spec/space_scan_spec.rb:70` (here 104 is the line number of the method)
-- result should be similar to:
+
+Result should be similar to:
 <h4>SpaceScanner</h4>
 <h4>#space_before_curly_bracket_scan</h4>
   <li>should return nil if there is a space before the opening curly bracket.</li>
@@ -121,17 +122,7 @@ To run the tests described for each method:
 <h4>#trailing_space_scan</h4>
   <li>should return an error messages if there is a trailing space.</li>
   <li>should return nil if there is no trailing space</li>
-<h4>#last_line_scan</h4>
-  <li>should return nil if the last line is blank.</li>
-  <li>should return error message if the last line is missing</li>
-  <li>should return error message if the last line has more than one trailing blank line</li>
-  <h4>#indentation_scan</h4>
-  <li>should return an error messages if there is inconsistent indentation</li>
-  <li>should return nil if there is no inconsistent indentation</li>
-<h4>SyntaxScanner</h4>
-<h4>#missing_semicolon_scan</h4>
-   <li>should return error message if there is missing simicolon</li>
-   <li>should return nil if there is no missing simicolon</li>
+
 
 
 ## ✒️  Author <a name = "author"></a>
