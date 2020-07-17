@@ -24,6 +24,7 @@ class MinStyleiLintController
   end
 
   private
+
   def read
     if @file.nil?
       read_files
