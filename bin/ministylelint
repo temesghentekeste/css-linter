@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+require_relative '../lib/ministylelint_controller.rb'
+
+class MinStyleiLint
+  def initialize(file)
+    puts 'Initializing Mini Style Lint... '
+    if !file.nil? && !File.exist?(file)
+      puts 'Invalid file, please input valid file.'
+      exit
+    end
+    ministylelint_controller = MinStyleiLintController.new(file)
+  end
+end
+
+file = ARGV[0]
+mini_lint = MinStyleiLint.new(file)

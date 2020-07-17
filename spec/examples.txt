@@ -1,0 +1,13 @@
+example_id                        | status | run_time        |
+--------------------------------- | ------ | --------------- |
+./spec/space_scan_spec.rb[1:1:1]  | passed | 0.00008 seconds |
+./spec/space_scan_spec.rb[1:1:2]  | passed | 0.0001 seconds  |
+./spec/space_scan_spec.rb[1:1:3]  | passed | 0.00008 seconds |
+./spec/space_scan_spec.rb[1:2:1]  | passed | 0.00011 seconds |
+./spec/space_scan_spec.rb[1:2:2]  | passed | 0.00012 seconds |
+./spec/space_scan_spec.rb[1:3:1]  | passed | 0.00009 seconds |
+./spec/space_scan_spec.rb[1:3:2]  | passed | 0.00008 seconds |
+./spec/space_scan_spec.rb[1:4:1]  | passed | 0.00009 seconds |
+./spec/space_scan_spec.rb[1:4:2]  | passed | 0.0001 seconds  |
+./spec/syntax_scan_spec.rb[1:1:1] | passed | 0.00011 seconds |
+./spec/syntax_scan_spec.rb[1:1:2] | passed | 0.00046 seconds |
