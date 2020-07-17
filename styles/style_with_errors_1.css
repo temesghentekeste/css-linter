@@ -16,7 +16,7 @@ body {
 }
 
 a {
-  color: var(--black-color); 
+  color: var(--black-color);
   font-family: var(--primary-font);
 }
 
@@ -456,7 +456,8 @@ footer .fa-facebook-square:hover {
 
 footer .fa-twitter:hover,
 footer .fa-instagram:hover,
-
-.fa-linkedin:hover {
+.fa-linkedin:hover{ 
   color: #1da1f2; 
 }
+
+
