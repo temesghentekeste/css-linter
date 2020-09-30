@@ -35,7 +35,7 @@ This project is a capstone project developed as a completion of Ruby section of 
 ### Screenshot of linter displaying errors
 ![screenshot](./images/multiple_file_scanning.png)
 
-## 🔧 Built with<a name = "with"></a>
+## 🔧 Built Using<a name = "with"></a>
 
 - Ruby 2.7.0
 - Rspec gem
